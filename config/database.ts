@@ -1,10 +1,13 @@
-// File: strapi/config/database.js
+// strapi/config/database.ts
 export default ({ env }) => ({
   connection: {
-    client: 'sqlite',
+    client: env('DATABASE_CLIENT', 'postgres'),
     connection: {
-      filename: env('DATABASE_FILENAME', '.tmp/data.db'),
+      connectionString: env('DATABASE_URL'),
+      ssl: {
+        rejectUnauthorized: false,
+      },
     },
-    useNullAsDefault: true,
+    debug: false,
   },
 });
