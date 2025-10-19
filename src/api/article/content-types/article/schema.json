@@ -110,6 +110,9 @@
         "guide-buy",
         "guide-advanced"
       ]
+    },
+    "tags_txt": {
+      "type": "string"
     }
   }
 }

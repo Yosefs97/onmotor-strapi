@@ -416,6 +416,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     subdescription: Schema.Attribute.String;
     tableData: Schema.Attribute.JSON;
     tags: Schema.Attribute.JSON;
+    tags_txt: Schema.Attribute.String;
     time: Schema.Attribute.Time;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
