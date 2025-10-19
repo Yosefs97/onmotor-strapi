@@ -7,17 +7,25 @@
     "displayName": "Forum Comment"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
-    "text": { "type": "text", "required": true },
-    "author": { "type": "string" },
-    "date": { "type": "datetime", "default": "now" },
-    "thread": {
+    "forum_thread": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::forum-thread.forum-thread",
       "inversedBy": "comments"
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
     }
   }
 }

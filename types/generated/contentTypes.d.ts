@@ -471,6 +471,115 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiForumCategoryForumCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'forum_categories';
+  info: {
+    displayName: 'Forum Category';
+    pluralName: 'forum-categories';
+    singularName: 'forum-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    forum_threads: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::forum-thread.forum-thread'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::forum-category.forum-category'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiForumCommentForumComment
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'forum_comments';
+  info: {
+    displayName: 'Forum Comment';
+    pluralName: 'forum-comments';
+    singularName: 'forum-comment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime;
+    forum_thread: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::forum-thread.forum-thread'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::forum-comment.forum-comment'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiForumThreadForumThread extends Struct.CollectionTypeSchema {
+  collectionName: 'forum_threads';
+  info: {
+    displayName: 'Forum Thread';
+    pluralName: 'forum-threads';
+    singularName: 'forum-thread';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::forum-category.forum-category'
+    >;
+    comments: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::forum-comment.forum-comment'
+    >;
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime &
+      Schema.Attribute.DefaultTo<'2025-10-18T21:00:00.000Z'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::forum-thread.forum-thread'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPopularPopular extends Struct.CollectionTypeSchema {
   collectionName: 'populars';
   info: {
@@ -1093,6 +1202,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
       'api::comment.comment': ApiCommentComment;
+      'api::forum-category.forum-category': ApiForumCategoryForumCategory;
+      'api::forum-comment.forum-comment': ApiForumCommentForumComment;
+      'api::forum-thread.forum-thread': ApiForumThreadForumThread;
       'api::popular.popular': ApiPopularPopular;
       'api::pross.pross': ApiProssPross;
       'api::sidebar-middle.sidebar-middle': ApiSidebarMiddleSidebarMiddle;

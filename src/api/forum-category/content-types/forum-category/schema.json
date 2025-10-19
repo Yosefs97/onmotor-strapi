@@ -7,12 +7,18 @@
     "displayName": "Forum Category"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
-    "name": { "type": "string", "required": true },
-    "description": { "type": "text" },
-    "threads": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "forum_threads": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::forum-thread.forum-thread",

@@ -9,22 +9,33 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
-    "title": { "type": "string", "required": true },
-    "content": { "type": "text" },
-    "author": { "type": "string" },
-    "date": { "type": "datetime", "default": "now" },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "author": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime",
+      "default": "2025-10-18T21:00:00.000Z"
+    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::forum-category.forum-category",
-      "inversedBy": "threads"
+      "inversedBy": "forum_threads"
     },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::forum-comment.forum-comment",
-      "mappedBy": "thread"
+      "mappedBy": "forum_thread"
     }
   }
 }
