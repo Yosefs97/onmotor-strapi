@@ -36,6 +36,11 @@
       "relation": "oneToMany",
       "target": "api::forum-comment.forum-comment",
       "mappedBy": "forum_thread"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
