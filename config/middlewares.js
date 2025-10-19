@@ -11,8 +11,15 @@ module.exports = [
         'https://onmotormedia.com',
         'https://www.onmotormedia.com'
       ],
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], // ✅ הוספתי PATCH
+      headers: [
+        'Content-Type',
+        'Authorization',
+        'Origin',
+        'Accept',
+        'Access-Control-Allow-Origin'
+      ],
+      credentials: true, // ✅ מאפשר שליחת cookies / headers מאובטחים
       keepHeaderOnError: true,
     },
   },
