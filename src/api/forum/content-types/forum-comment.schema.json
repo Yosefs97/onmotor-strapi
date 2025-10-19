@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forum_comments",
+  "info": {
+    "singularName": "forum-comment",
+    "pluralName": "forum-comments",
+    "displayName": "Forum Comments",
+    "description": "תגובות לדיונים בפורום"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "text": { "type": "text", "required": true },
+    "author": { "type": "string" },
+    "date": { "type": "datetime", "default": { "currentTimestamp": true } },
+    "thread": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::forum.forum-thread",
+      "inversedBy": "comments"
+    }
+  }
+}

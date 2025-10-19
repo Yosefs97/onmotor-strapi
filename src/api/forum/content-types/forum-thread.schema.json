@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forum_threads",
+  "info": {
+    "singularName": "forum-thread",
+    "pluralName": "forum-threads",
+    "displayName": "Forum Threads",
+    "description": "דיונים בפורום OnMotor Media"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "content": { "type": "richtext" },
+    "author": { "type": "string" },
+    "email": { "type": "email" },
+    "date": { "type": "datetime", "default": { "currentTimestamp": true } },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::forum.forum-category",
+      "inversedBy": "threads"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::forum.forum-comment",
+      "mappedBy": "thread"
+    }
+  }
+}
