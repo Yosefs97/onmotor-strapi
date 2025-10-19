@@ -8,7 +8,8 @@ module.exports = [
         'http://localhost:3000',
         'https://onmotor-frontend.vercel.app',
         'https://onmotor-frontend-f59b-rhq47hbv7-yosefs-projects-8bc687be.vercel.app',
-        'https://onmotormedia.com'
+        'https://onmotormedia.com',
+        'https://www.onmotormedia.com'
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
