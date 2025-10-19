@@ -23,6 +23,10 @@
       "relation": "oneToMany",
       "target": "api::forum-thread.forum-thread",
       "mappedBy": "category"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }
