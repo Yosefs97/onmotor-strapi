@@ -4,18 +4,19 @@
   "info": {
     "singularName": "forum-comment",
     "pluralName": "forum-comments",
-    "displayName": "Forum Comments",
-    "description": "תגובות לדיונים בפורום"
+    "displayName": "Forum Comment"
   },
-  "options": { "draftAndPublish": false },
+  "options": {
+    "draftAndPublish": false
+  },
   "attributes": {
     "text": { "type": "text", "required": true },
     "author": { "type": "string" },
-    "date": { "type": "datetime", "default": { "currentTimestamp": true } },
+    "date": { "type": "datetime", "default": "now" },
     "thread": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::forum.forum-thread",
+      "target": "api::forum-thread.forum-thread",
       "inversedBy": "comments"
     }
   }

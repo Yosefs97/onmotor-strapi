@@ -1,7 +1,3 @@
-export default {
-  async getAll() {
-    return await strapi.db.query('api::forum.forum-category').findMany({
-      populate: { threads: true }
-    });
-  }
-};
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreService('api::forum-category.forum-category');

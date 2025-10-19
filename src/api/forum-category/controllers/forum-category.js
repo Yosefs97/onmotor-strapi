@@ -1,18 +1,3 @@
-export default {
-  async find(ctx) {
-    const data = await strapi.db.query('api::forum.forum-category').findMany({
-      populate: { threads: true },
-      orderBy: { name: 'asc' },
-    });
-    ctx.body = data;
-  },
+import { factories } from '@strapi/strapi';
 
-  async findOne(ctx) {
-    const { id } = ctx.params;
-    const data = await strapi.db.query('api::forum.forum-category').findOne({
-      where: { id },
-      populate: { threads: true },
-    });
-    ctx.body = data;
-  }
-};
+export default factories.createCoreController('api::forum-category.forum-category');

@@ -4,26 +4,26 @@
   "info": {
     "singularName": "forum-thread",
     "pluralName": "forum-threads",
-    "displayName": "Forum Threads",
-    "description": "דיונים בפורום OnMotor Media"
+    "displayName": "Forum Thread"
   },
-  "options": { "draftAndPublish": false },
+  "options": {
+    "draftAndPublish": true
+  },
   "attributes": {
     "title": { "type": "string", "required": true },
-    "content": { "type": "richtext" },
+    "content": { "type": "text" },
     "author": { "type": "string" },
-    "email": { "type": "email" },
-    "date": { "type": "datetime", "default": { "currentTimestamp": true } },
+    "date": { "type": "datetime", "default": "now" },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::forum.forum-category",
+      "target": "api::forum-category.forum-category",
       "inversedBy": "threads"
     },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::forum.forum-comment",
+      "target": "api::forum-comment.forum-comment",
       "mappedBy": "thread"
     }
   }

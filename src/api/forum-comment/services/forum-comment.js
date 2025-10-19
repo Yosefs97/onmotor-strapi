@@ -1,8 +1,3 @@
-export default {
-  async getByThread(threadId) {
-    return await strapi.db.query('api::forum.forum-comment').findMany({
-      where: { thread: threadId },
-      orderBy: { date: 'asc' }
-    });
-  }
-};
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreService('api::forum-comment.forum-comment');

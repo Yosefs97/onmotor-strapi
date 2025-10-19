@@ -1,9 +1,3 @@
-export default {
-  async getRecent(limit = 10) {
-    return await strapi.db.query('api::forum.forum-thread').findMany({
-      populate: { category: true },
-      orderBy: { date: 'desc' },
-      limit
-    });
-  }
-};
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreService('api::forum-thread.forum-thread');

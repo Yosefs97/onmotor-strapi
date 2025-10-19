@@ -4,18 +4,18 @@
   "info": {
     "singularName": "forum-category",
     "pluralName": "forum-categories",
-    "displayName": "Forum Categories",
-    "description": "קטגוריות הפורום באתר OnMotor Media"
+    "displayName": "Forum Category"
   },
-  "options": { "draftAndPublish": false },
+  "options": {
+    "draftAndPublish": false
+  },
   "attributes": {
     "name": { "type": "string", "required": true },
-    "slug": { "type": "uid", "targetField": "name" },
     "description": { "type": "text" },
     "threads": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::forum.forum-thread",
+      "target": "api::forum-thread.forum-thread",
       "mappedBy": "category"
     }
   }
