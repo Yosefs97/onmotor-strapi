@@ -1,6 +1,6 @@
 // strapi/config/server.ts
 export default ({ env }) => ({
-  url: env('PUBLIC_URL', 'https://www.onmotormedia.com'),
+  url: env('PUBLIC_URL', 'https://onmotor-strapi.onrender.com'),
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
   app: {
