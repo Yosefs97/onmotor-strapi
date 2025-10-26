@@ -1,14 +1,17 @@
-// strapi\config\plugins.ts
-export default () => ({
-  'users-permissions': {
+// config/plugins.js
+module.exports = ({ env }) => ({
+  upload: {
     config: {
-      jwt: {
-        expiresIn: '7d',
+      provider: '@strapi/provider-upload-cloudinary',
+      providerOptions: {
+        cloud_name: env('CLOUDINARY_NAME'),
+        api_key: env('CLOUDINARY_KEY'),
+        api_secret: env('CLOUDINARY_SECRET'),
+      },
+      actionOptions: {
+        upload: {},
+        delete: {},
       },
     },
-  },
-  // **הוסף את הבלוק הזה עבור ה-Content-Type Builder:**
-  'content-type-builder': {
-    enabled: true,
   },
 });
