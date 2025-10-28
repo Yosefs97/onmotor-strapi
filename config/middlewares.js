@@ -1,5 +1,20 @@
+// config/middlewares.js
 module.exports = [
   'strapi::errors',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'default-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
+          'connect-src': ["'self'", 'https:', 'https://res.cloudinary.com'],
+        },
+      },
+    },
+  },
   {
     name: 'strapi::cors',
     config: {
@@ -9,21 +24,20 @@ module.exports = [
         'https://onmotor-frontend.vercel.app',
         'https://onmotor-frontend-f59b-rhq47hbv7-yosefs-projects-8bc687be.vercel.app',
         'https://onmotormedia.com',
-        'https://www.onmotormedia.com'
+        'https://www.onmotormedia.com',
       ],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], // ✅ הוספתי PATCH
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       headers: [
         'Content-Type',
         'Authorization',
         'Origin',
         'Accept',
-        'Access-Control-Allow-Origin'
+        'Access-Control-Allow-Origin',
       ],
-      credentials: true, // ✅ מאפשר שליחת cookies / headers מאובטחים
+      credentials: true,
       keepHeaderOnError: true,
     },
   },
-  'strapi::security',
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
