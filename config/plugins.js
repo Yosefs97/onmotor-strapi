@@ -12,7 +12,7 @@ module.exports = ({ env }) => ({
         delete: {},
       },
       // ✅ תוספת קריטית להצגת תמונות תקינה בממשק Strapi
-      baseUrl: `https://res.cloudinary.com/${env('CLOUDINARY_NAME')}`,
+      baseUrl: `https://res.cloudinary.com/${env('CLOUDINARY_NAME')}/`,
     },
   },
 });
