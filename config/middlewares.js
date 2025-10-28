@@ -7,10 +7,10 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'default-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
-          'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'https://res.cloudinary.com'],
-          'media-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'https://res.cloudinary.com'],
+          'default-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
+          'connect-src': ["'self'", 'https:', 'res.cloudinary.com'],
+          'img-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'res.cloudinary.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'res.cloudinary.com'],
           upgradeInsecureRequests: null,
         },
       },
@@ -23,7 +23,6 @@ module.exports = [
       origin: [
         'http://localhost:3000',
         'https://onmotor-frontend.vercel.app',
-        'https://onmotor-frontend-f59b-rhq47hbv7-yosefs-projects-8bc687be.vercel.app',
         'https://onmotormedia.com',
         'https://www.onmotormedia.com',
       ],
