@@ -7,10 +7,10 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'default-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
-          'connect-src': ["'self'", 'https:', 'res.cloudinary.com'],
-          'img-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'res.cloudinary.com'],
-          'media-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'res.cloudinary.com'],
+          'default-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
+          'connect-src': ["'self'", 'https:', 'https://res.cloudinary.com'],
+          'img-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'https://res.cloudinary.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'dl.airtable.com', 'https://res.cloudinary.com'],
           upgradeInsecureRequests: null,
         },
       },
