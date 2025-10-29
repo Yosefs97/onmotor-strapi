@@ -6,7 +6,7 @@ export default {
       path: '/populars/:id/increment-view',
       handler: 'popular.incrementView',
       config: {
-        auth: false,
+        auth:{ scope: ['public'] },
       },
     },
   ],
