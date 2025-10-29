@@ -1,7 +1,8 @@
+// config/plugins.js
 module.exports = ({ env }) => ({
   upload: {
     config: {
-      provider: 'cloudinary',
+      provider: '@strapi/provider-upload-cloudinary',
       providerOptions: {
         cloud_name: env('CLOUDINARY_NAME'),
         api_key: env('CLOUDINARY_KEY'),
@@ -11,8 +12,14 @@ module.exports = ({ env }) => ({
         upload: {},
         delete: {},
       },
-      // ✅ תוספת קריטית להצגת תמונות תקינה בממשק Strapi
+      // תוספת ויזואלית בלבד, לא חובה – אבל עוזרת אם יש מדיה חיצונית
       baseUrl: `https://res.cloudinary.com/${env('CLOUDINARY_NAME')}/`,
+      breakpoints: {
+        large: 1000,
+        medium: 750,
+        small: 500,
+        thumbnail: 150,
+      },
     },
   },
 });
