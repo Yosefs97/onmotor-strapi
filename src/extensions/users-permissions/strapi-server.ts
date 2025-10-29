@@ -1,18 +1,20 @@
-const { getService } = require('@strapi/plugin-users-permissions/server/utils');
+// C:\Users\yosef\Desktop\onmotor-strapi\src\extensions\users-permissions\strapi-server.ts
 
-module.exports = (plugin) => {
-  plugin.controllers.user.deleteMe = async (ctx) => {
+export default (plugin: any) => {
+  const userService = strapi.plugin('users-permissions').service('user');
+
+  plugin.controllers.user.deleteMe = async (ctx: any) => {
     const authUser = ctx.state.user;
     if (!authUser) {
       return ctx.unauthorized('User not authenticated');
     }
 
-    const user = await getService('user').fetch(authUser.id);
+    const user = await userService.fetch(authUser.id);
     if (!user) {
       return ctx.notFound('User not found');
     }
 
-    await getService('user').remove({ id: authUser.id });
+    await userService.remove({ id: authUser.id });
 
     ctx.send({ message: 'User deleted successfully' });
   };
