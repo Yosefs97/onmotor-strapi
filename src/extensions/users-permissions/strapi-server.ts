@@ -1,13 +1,14 @@
-// C:\Users\yosef\Desktop\onmotor-strapi\src\extensions\users-permissions\strapi-server.ts
+// src/extensions/users-permissions/strapi-server.ts
 
 export default (plugin: any) => {
-  const userService = strapi.plugin('users-permissions').service('user');
-
   plugin.controllers.user.deleteMe = async (ctx: any) => {
     const authUser = ctx.state.user;
     if (!authUser) {
       return ctx.unauthorized('User not authenticated');
     }
+
+    // 🟢 השורה הקריטית — לוקחים את השירות רק כשהפונקציה רצה:
+    const userService = strapi.plugin('users-permissions').service('user');
 
     const user = await userService.fetch(authUser.id);
     if (!user) {
