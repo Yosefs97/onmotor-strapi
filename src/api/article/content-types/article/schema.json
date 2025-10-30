@@ -113,6 +113,9 @@
     },
     "tags_txt": {
       "type": "string"
+    },
+    "externalImageUrls": {
+      "type": "text"
     }
   }
 }
