@@ -17,9 +17,9 @@ module.exports = [
     },
   },
   {
+    // ✅ הגדרה תואמת לגרסה 5
     name: 'strapi::cors',
     config: {
-      enabled: true,
       origin: [
         'http://localhost:3000',
         'https://onmotor-frontend.vercel.app',
@@ -27,15 +27,8 @@ module.exports = [
         'https://www.onmotormedia.com',
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-      headers: [
-        'Content-Type',
-        'Authorization',
-        'Origin',
-        'Accept',
-        'Access-Control-Allow-Origin',
-      ],
+      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       credentials: true,
-      keepHeaderOnError: true,
     },
   },
   'strapi::poweredBy',
