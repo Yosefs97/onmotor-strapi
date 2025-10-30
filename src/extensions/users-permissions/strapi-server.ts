@@ -7,7 +7,7 @@ export default (plugin: any) => {
       return ctx.unauthorized('User not authenticated');
     }
 
-    // 🟢 השורה הקריטית — לוקחים את השירות רק כשהפונקציה רצה:
+    // לוקחים את השירות רק כשהפונקציה רצה
     const userService = strapi.plugin('users-permissions').service('user');
 
     const user = await userService.fetch(authUser.id);
@@ -20,12 +20,13 @@ export default (plugin: any) => {
     ctx.send({ message: 'User deleted successfully' });
   };
 
+  // ✅ שינוי כאן – auth חייב להיות אובייקט
   plugin.routes['content-api'].routes.push({
     method: 'DELETE',
     path: '/users/me',
     handler: 'user.deleteMe',
     config: {
-      auth: true,
+      auth: { scope: ['authenticated'] }, // היה: auth: true
     },
   });
 
