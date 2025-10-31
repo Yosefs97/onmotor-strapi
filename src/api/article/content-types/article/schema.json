@@ -116,6 +116,9 @@
     },
     "externalImageUrls": {
       "type": "text"
+    },
+    "external_media_links": {
+      "type": "json"
     }
   }
 }
