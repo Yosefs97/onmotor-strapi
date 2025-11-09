@@ -38,9 +38,19 @@
       "mappedBy": "forum_thread"
     },
     "slug": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "uid"
+    },
+    "views": {
+      "type": "integer"
+    },
+    "pinned": {
+      "type": "boolean"
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "lastActivity": {
+      "type": "datetime"
     }
   }
 }

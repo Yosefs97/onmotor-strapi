@@ -501,7 +501,7 @@ export interface ApiForumCategoryForumCategory
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.String & Schema.Attribute.Unique;
+    slug: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -536,7 +536,11 @@ export interface ApiForumCommentForumComment
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.String & Schema.Attribute.Required;
+    reply_to: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::forum-comment.forum-comment'
+    >;
+    text: Schema.Attribute.RichText;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -569,20 +573,22 @@ export interface ApiForumThreadForumThread extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     date: Schema.Attribute.DateTime &
       Schema.Attribute.DefaultTo<'2025-10-18T21:00:00.000Z'>;
+    lastActivity: Schema.Attribute.DateTime;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::forum-thread.forum-thread'
     > &
       Schema.Attribute.Private;
+    locked: Schema.Attribute.Boolean;
+    pinned: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    slug: Schema.Attribute.UID;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    views: Schema.Attribute.Integer;
   };
 }
 

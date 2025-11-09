@@ -17,15 +17,19 @@
       "target": "api::forum-thread.forum-thread",
       "inversedBy": "comments"
     },
-    "text": {
-      "type": "string",
-      "required": true
-    },
     "author": {
       "type": "string"
     },
     "date": {
       "type": "datetime"
+    },
+    "reply_to": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::forum-comment.forum-comment"
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }
