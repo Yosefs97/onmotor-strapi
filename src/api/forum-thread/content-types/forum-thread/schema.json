@@ -54,7 +54,10 @@
     },
     "commentsCount": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "configurable": true,
+      "writable": true,
+      "visible": true
     }
   }
 }
