@@ -51,6 +51,10 @@
     },
     "lastActivity": {
       "type": "datetime"
+    },
+    "commentsCount": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
