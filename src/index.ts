@@ -1,20 +1,58 @@
-// import type { Core } from '@strapi/strapi';
+// src/index.ts
+import type { Core } from '@strapi/strapi';
 
 export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
-   */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  async register({ strapi }: { strapi: Core.Strapi }) {
+    // ✅ רישום route ידני לעדכון views
+    strapi.server.routes([
+      {
+        method: 'POST',
+        path: '/api/forum-thread/view',
+        handler: async (ctx) => {
+          try {
+            const { slug } = ctx.request.body;
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+            if (!slug) {
+              ctx.status = 400;
+              ctx.body = { error: 'Missing slug' };
+              return;
+            }
+
+            // 🔍 איתור השרשור לפי slug
+            const thread = await strapi.db
+              .query('api::forum-thread.forum-thread')
+              .findOne({ where: { slug } });
+
+            if (!thread) {
+              ctx.status = 404;
+              ctx.body = { error: 'Thread not found' };
+              return;
+            }
+
+            const newViews = (thread.views || 0) + 1;
+
+            // 🔁 עדכון views במסד הנתונים
+            await strapi.db
+              .query('api::forum-thread.forum-thread')
+              .update({
+                where: { id: thread.id },
+                data: { views: newViews },
+              });
+
+            ctx.status = 200;
+            ctx.body = { success: true, views: newViews };
+          } catch (err) {
+            strapi.log.error('❌ Error incrementing views:', err);
+            ctx.status = 500;
+            ctx.body = { error: 'Internal server error' };
+          }
+        },
+        config: {
+          auth: false, // פתוח גם למשתמשים לא מחוברים
+        },
+      },
+    ]);
+  },
+
+  async bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
 };
