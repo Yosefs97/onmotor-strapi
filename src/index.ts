@@ -1,9 +1,7 @@
-// src/index.ts
 import type { Core } from '@strapi/strapi';
 
 export default {
   async register({ strapi }: { strapi: Core.Strapi }) {
-    // ✅ רישום route ידני לעדכון views
     strapi.server.routes([
       {
         method: 'POST',
@@ -11,14 +9,12 @@ export default {
         handler: async (ctx) => {
           try {
             const { slug } = ctx.request.body;
-
             if (!slug) {
               ctx.status = 400;
               ctx.body = { error: 'Missing slug' };
               return;
             }
 
-            // 🔍 איתור השרשור לפי slug
             const thread = await strapi.db
               .query('api::forum-thread.forum-thread')
               .findOne({ where: { slug } });
@@ -31,7 +27,6 @@ export default {
 
             const newViews = (thread.views || 0) + 1;
 
-            // 🔁 עדכון views במסד הנתונים
             await strapi.db
               .query('api::forum-thread.forum-thread')
               .update({
@@ -47,12 +42,10 @@ export default {
             ctx.body = { error: 'Internal server error' };
           }
         },
-        config: {
-          auth: false, // פתוח גם למשתמשים לא מחוברים
-        },
+        config: { auth: false },
       },
     ]);
   },
 
-  async bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+  async bootstrap() {},
 };
