@@ -567,7 +567,9 @@ export interface ApiForumThreadForumThread extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::forum-comment.forum-comment'
     >;
-    commentsCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    commentsCount: Schema.Attribute.Integer &
+      Schema.Attribute.Configurable &
+      Schema.Attribute.DefaultTo<0>;
     content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
