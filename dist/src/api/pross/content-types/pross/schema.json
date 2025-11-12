@@ -1,0 +1,51 @@
+{
+    "kind": "collectionType",
+    "collectionName": "prosses",
+    "info": {
+        "singularName": "pross",
+        "pluralName": "prosses",
+        "displayName": "pross"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title_pros": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "title_pros"
+        },
+        "website": {
+            "type": "string"
+        },
+        "image": {
+            "type": "media",
+            "multiple": true,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "tag_name": {
+            "type": "string"
+        },
+        "video": {
+            "type": "media",
+            "multiple": true,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "mediaUrl": {
+            "type": "string"
+        }
+    }
+}
