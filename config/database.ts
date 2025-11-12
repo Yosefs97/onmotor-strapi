@@ -15,14 +15,5 @@ export default ({ env }) => {
     };
   }
 
-  // ✅ fallback למצב פיתוח (למנוע שגיאה אם DATABASE_URL חסר)
-  return {
-    connection: {
-      client: 'sqlite',
-      connection: {
-        filename: env('DATABASE_FILENAME', '.tmp/data.db'),
-      },
-      useNullAsDefault: true,
-    },
-  };
+  
 };
