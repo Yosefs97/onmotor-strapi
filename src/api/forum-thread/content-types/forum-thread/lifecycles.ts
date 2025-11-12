@@ -41,9 +41,7 @@ module.exports = {
       // חשוב: ה-Frontend שלח slug מקודד? נפענח ל-DB
       try {
         data.slug = decodeURIComponent(data.slug);
-      } catch (_) {
-        // אם אי אפשר לפענח — נשאיר כפי שהוא
-      }
+      } catch (_) {}
       data.slug = await findUniqueSlug(data.slug, uid);
     }
   },
