@@ -11,12 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "forum_thread": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::forum-thread.forum-thread",
-      "inversedBy": "comments"
-    },
     "author": {
       "type": "string"
     },

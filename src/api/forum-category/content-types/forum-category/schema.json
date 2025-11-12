@@ -18,12 +18,6 @@
     "description": {
       "type": "string"
     },
-    "forum_threads": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::forum-thread.forum-thread",
-      "mappedBy": "category"
-    },
     "slug": {
       "type": "uid"
     }
