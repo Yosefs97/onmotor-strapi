@@ -4,7 +4,7 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
-    "build": "strapi build",
+    "build": "node --max_old_space_size=2048 ./node_modules/@strapi/strapi/bin/strapi.js build",
     "console": "strapi console",
     "deploy": "strapi deploy",
     "dev": "strapi develop",
