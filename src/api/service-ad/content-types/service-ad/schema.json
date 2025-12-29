@@ -41,6 +41,9 @@
     },
     "priority": {
       "type": "integer"
+    },
+    "external_media_links": {
+      "type": "json"
     }
   }
 }

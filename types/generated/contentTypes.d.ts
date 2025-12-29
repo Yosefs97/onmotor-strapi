@@ -561,6 +561,7 @@ export interface ApiServiceAdServiceAd extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    external_media_links: Schema.Attribute.JSON;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
