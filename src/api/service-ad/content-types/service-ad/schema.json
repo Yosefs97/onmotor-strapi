@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_ads",
+  "info": {
+    "singularName": "service-ad",
+    "pluralName": "service-ads",
+    "displayName": "ServiceAd"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "lawyer",
+        "insurance",
+        "pro_riding",
+        "driving_school"
+      ]
+    },
+    "priority": {
+      "type": "integer"
+    }
+  }
+}

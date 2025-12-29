@@ -543,6 +543,41 @@ export interface ApiProssPross extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiServiceAdServiceAd extends Struct.CollectionTypeSchema {
+  collectionName: 'service_ads';
+  info: {
+    displayName: 'ServiceAd';
+    pluralName: 'service-ads';
+    singularName: 'service-ad';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['lawyer', 'insurance', 'pro_riding', 'driving_school']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service-ad.service-ad'
+    > &
+      Schema.Attribute.Private;
+    priority: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSidebarMiddleSidebarMiddle
   extends Struct.CollectionTypeSchema {
   collectionName: 'sidebar_middles';
@@ -1097,6 +1132,7 @@ declare module '@strapi/strapi' {
       'api::comment.comment': ApiCommentComment;
       'api::popular.popular': ApiPopularPopular;
       'api::pross.pross': ApiProssPross;
+      'api::service-ad.service-ad': ApiServiceAdServiceAd;
       'api::sidebar-middle.sidebar-middle': ApiSidebarMiddleSidebarMiddle;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
