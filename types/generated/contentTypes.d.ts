@@ -506,6 +506,37 @@ export interface ApiPopularPopular extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPopupPopup extends Struct.CollectionTypeSchema {
+  collectionName: 'popups';
+  info: {
+    displayName: 'Popup';
+    pluralName: 'popups';
+    singularName: 'popup';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ButtonText: Schema.Attribute.String;
+    CampaignID: Schema.Attribute.UID;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DelaySeconds: Schema.Attribute.Decimal;
+    external_media_links: Schema.Attribute.JSON;
+    IsActive: Schema.Attribute.Boolean;
+    Link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::popup.popup'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProssPross extends Struct.CollectionTypeSchema {
   collectionName: 'prosses';
   info: {
@@ -1132,6 +1163,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::comment.comment': ApiCommentComment;
       'api::popular.popular': ApiPopularPopular;
+      'api::popup.popup': ApiPopupPopup;
       'api::pross.pross': ApiProssPross;
       'api::service-ad.service-ad': ApiServiceAdServiceAd;
       'api::sidebar-middle.sidebar-middle': ApiSidebarMiddleSidebarMiddle;
